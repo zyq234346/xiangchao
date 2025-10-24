@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>财信金控2025年湘超联赛 - 完整赛程与积分榜</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .standings-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2a5298;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+        }
+        
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        .standings-table th {
+            background-color: #2a5298;
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .standings-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        
+        .standings-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .standings-table tr:hover {
+            background-color: #e8f4fd;
+        }
+        
+        .rank {
+            font-weight: bold;
+            width: 50px;
+        }
+        
+        .team-name {
+            text-align: left;
+            font-weight: bold;
+            width: 150px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        select, button {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: white;
+        }
+        
+        select {
+            min-width: 150px;
+        }
+        
+        button {
+            background-color: #2a5298;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1e3c72;
+        }
+        
+        .round-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .round-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .round-title {
+            font-size: 1.5rem;
+            color: #2a5298;
+            font-weight: bold;
+        }
+        
+        .match-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .match-table th {
+            background-color: #f8f9fa;
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .match-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .match-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .home-team, .away-team {
+            font-weight: bold;
+            width: 30%;
+        }
+        
+        .score {
+            text-align: center;
+            font-weight: bold;
+            color: #e74c3c;
+            width: 15%;
+        }
+        
+        .vs {
+            text-align: center;
+            color: #999;
+            width: 10%;
+        }
+        
+        .match-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .city-highlight {
+            background-color: #e8f4fd;
+            border-left: 4px solid #2a5298;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .city-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .city-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .city-title {
+            font-size: 1.5rem;
+            color: #2a5298;
+            font-weight: bold;
+        }
+        
+        .city-badge {
+            display: inline-block;
+            background-color: #2a5298;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .top-team {
+            background-color: #e8f5e9 !important;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .promotion-zone {
+            background-color: #e8f4fd !important;
+        }
+        
+        .relegation-zone {
+            background-color: #ffebee !important;
+        }
+        
+        .pending {
+            color: #999;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+            
+            .control-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            select {
+                flex-grow: 1;
+            }
+            
+            .home-team, .away-team {
+                width: 35%;
+            }
+            
+            .score, .vs {
+                width: 15%;
+            }
+            
+            .standings-table {
+                font-size: 0.8rem;
+            }
+            
+            .standings-table th, .standings-table td {
+                padding: 8px 5px;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>财信金控2025年湘超联赛</h1>
+            <p class="subtitle">湖南省足球联赛 - 完整赛程与积分榜系统</p>
+        </header>
+        
+        <section class="standings-section">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> 联赛积分榜</h2>
+            <table class="standings-table" id="standings-table">
+                <thead>
+                    <tr>
+                        <th class="rank">排名</th>
+                        <th class="team-name">球队</th>
+                        <th>场次</th>
+                        <th>胜</th>
+                        <th>平</th>
+                        <th>负</th>
+                        <th>进球</th>
+                        <th>失球</th>
+                        <th>净胜球</th>
+                        <th>积分</th>
+                    </tr>
+                </thead>
+                <tbody id="standings-body">
+                    <!-- 积分榜数据将通过JavaScript动态生成 -->
+                </tbody>
+            </table>
+        </section>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="view-select">查看方式：</label>
+                <select id="view-select">
+                    <option value="rounds">按轮次查看</option>
+                    <option value="city">按城市查看</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="round-select">选择轮次：</label>
+                <select id="round-select">
+                    <option value="all">全部轮次</option>
+                    <option value="1">第一轮</option>
+                    <option value="2">第二轮</option>
+                    <option value="3">第三轮</option>
+                    <option value="4">第四轮</option>
+                    <option value="5">第五轮</option>
+                    <option value="6">第六轮</option>
+                    <option value="7">第七轮</option>
+                    <option value="8">第八轮</option>
+                    <option value="9">第九轮</option>
+                    <option value="10">第十轮</option>
+                    <option value="11">第十一轮</option>
+                    <option value="12">第十二轮</option>
+                    <option value="13">第十三轮</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="city-select">选择城市：</label>
+                <select id="city-select">
+                    <option value="all">全部城市</option>
+                    <option value="长沙">长沙</option>
+                    <option value="常德">常德</option>
+                    <option value="株洲">株洲</option>
+                    <option value="衡阳">衡阳</option>
+                    <option value="永州">永州</option>
+                    <option value="邵阳">邵阳</option>
+                    <option value="益阳">益阳</option>
+                    <option value="娄底">娄底</option>
+                    <option value="岳阳">岳阳</option>
+                    <option value="郴州">郴州</option>
+                    <option value="张家界">张家界</option>
+                    <option value="怀化">怀化</option>
+                    <option value="湘西">湘西</option>
+                    <option value="湘潭">湘潭</option>
+                </select>
+            </div>
+            
+            <button id="reset-btn">重置筛选</button>
+        </div>
+        
+        <div id="rounds-view">
+            <!-- 轮次视图内容将通过JavaScript动态生成 -->
+        </div>
+        
+        <div id="city-view" class="hidden">
+            <!-- 城市视图内容将通过JavaScript动态生成 -->
+        </div>
+        
+        <footer>
+            <p>2025年湘超联赛数据统计 | 最后更新: 2025年10月</p>
+        </footer>
+    </div>
+
+    <script>
+        // 比赛数据
+        const matchData = [
+            // 第一轮
+            { round: 1, date: "9月7日", weekday: "星期日", time: "19:38", home: "长沙", away: "娄底", score: "2:0" },
+            { round: 1, date: "9月12日", weekday: "星期五", time: "19:38", home: "邵阳", away: "湘潭", score: "2:1" },
+            { round: 1, date: "9月13日", weekday: "星期六", time: "19:38", home: "衡阳", away: "株洲", score: "2:3" },
+            { round: 1, date: "9月13日", weekday: "星期六", time: "19:38", home: "郴州", away: "常德", score: "3:4" },
+            { round: 1, date: "9月13日", weekday: "星期六", time: "19:38", home: "湘西", away: "益阳", score: "0:2" },
+            { round: 1, date: "9月14日", weekday: "星期日", time: "19:38", home: "岳阳", away: "怀化", score: "2:0" },
+            { round: 1, date: "9月14日", weekday: "星期日", time: "19:38", home: "张家界", away: "永州", score: "3:3" },
+            
+            // 第二轮
+            { round: 2, date: "9月19日", weekday: "星期五", time: "19:38", home: "岳阳", away: "邵阳", score: "0:0" },
+            { round: 2, date: "9月20日", weekday: "星期六", time: "19:38", home: "郴州", away: "长沙", score: "0:0" },
+            { round: 2, date: "9月20日", weekday: "星期六", time: "19:38", home: "娄底", away: "常德", score: "0:1" },
+            { round: 2, date: "9月20日", weekday: "星期六", time: "19:38", home: "益阳", away: "衡阳", score: "0:1" },
+            { round: 2, date: "9月20日", weekday: "星期六", time: "19:38", home: "湘西", away: "怀化", score: "2:0" },
+            { round: 2, date: "9月21日", weekday: "星期日", time: "19:38", home: "张家界", away: "株洲", score: "0:2" },
+            { round: 2, date: "9月21日", weekday: "星期日", time: "19:38", home: "永州", away: "湘潭", score: "3:0" },
+            
+            // 第三轮
+            { round: 3, date: "9月26日", weekday: "星期五", time: "19:38", home: "常德", away: "张家界", score: "4:0" },
+            { round: 3, date: "9月27日", weekday: "星期六", time: "19:38", home: "衡阳", away: "岳阳", score: "2:0" },
+            { round: 3, date: "9月27日", weekday: "星期六", time: "19:38", home: "娄底", away: "怀化", score: "2:0" },
+            { round: 3, date: "9月27日", weekday: "星期六", time: "19:38", home: "益阳", away: "郴州", score: "0:2" },
+            { round: 3, date: "9月27日", weekday: "星期六", time: "19:38", home: "永州", away: "湘西", score: "0:0" },
+            { round: 3, date: "9月28日", weekday: "星期日", time: "19:38", home: "湘潭", away: "长沙", score: "0:2" },
+            { round: 3, date: "9月28日", weekday: "星期日", time: "19:38", home: "邵阳", away: "株洲", score: "0:3" },
+            
+            // 第四轮
+            { round: 4, date: "10月3日", weekday: "星期五", time: "19:38", home: "岳阳", away: "永州", score: "0:0" },
+            { round: 4, date: "10月4日", weekday: "星期六", time: "19:38", home: "湘潭", away: "娄底", score: "1:2" },
+            { round: 4, date: "10月4日", weekday: "星期六", time: "19:38", home: "怀化", away: "益阳", score: "1:1" },
+            { round: 4, date: "10月4日", weekday: "星期六", time: "19:38", home: "张家界", away: "邵阳", score: "1:1" },
+            { round: 4, date: "10月4日", weekday: "星期六", time: "19:38", home: "湘西", away: "长沙", score: "0:1" },
+            { round: 4, date: "10月5日", weekday: "星期日", time: "19:38", home: "郴州", away: "株洲", score: "1:1" },
+            { round: 4, date: "10月5日", weekday: "星期日", time: "19:38", home: "常德", away: "衡阳", score: "0:0" },
+            
+            // 第五轮
+            { round: 5, date: "10月10日", weekday: "星期五", time: "19:38", home: "长沙", away: "衡阳", score: "2:0" },
+            { round: 5, date: "10月11日", weekday: "星期六", time: "19:38", home: "郴州", away: "张家界", score: "3:1" },
+            { round: 5, date: "10月11日", weekday: "星期六", time: "19:38", home: "娄底", away: "岳阳", score: "0:0" },
+            { round: 5, date: "10月11日", weekday: "星期六", time: "19:38", home: "益阳", away: "湘潭", score: "2:1" },
+            { round: 5, date: "10月11日", weekday: "星期六", time: "19:38", home: "湘西", away: "常德", score: "2:5" },
+            { round: 5, date: "10月12日", weekday: "星期日", time: "20:15", home: "株洲", away: "怀化", score: "3:0" },
+            { round: 5, date: "10月12日", weekday: "星期日", time: "20:15", home: "永州", away: "邵阳", score: "4:1" },
+            
+            // 第六轮
+            { round: 6, date: "10月17日", weekday: "星期五", time: "19:38", home: "湘潭", away: "株洲", score: "1:1" },
+            { round: 6, date: "10月18日", weekday: "星期六", time: "19:38", home: "怀化", away: "永州", score: "1:2" },
+            { round: 6, date: "10月18日", weekday: "星期六", time: "19:38", home: "衡阳", away: "湘西", score: "6:2" },
+            { round: 6, date: "10月18日", weekday: "星期六", time: "19:38", home: "常德", away: "邵阳", score: "2:2" },
+            { round: 6, date: "10月18日", weekday: "星期六", time: "19:38", home: "娄底", away: "益阳", score: "1:1" },
+            { round: 6, date: "10月19日", weekday: "星期日", time: "19:38", home: "张家界", away: "长沙", score: "0:5" },
+            { round: 6, date: "10月19日", weekday: "星期日", time: "19:38", home: "岳阳", away: "郴州", score: "1:1" },
+            
+            // 第七轮
+            { round: 7, date: "10月24日", weekday: "星期五", time: "19:38", home: "郴州", away: "娄底", score: "待定" },
+            { round: 7, date: "10月25日", weekday: "星期六", time: "19:38", home: "株洲", away: "常德", score: "待定" },
+            { round: 7, date: "10月25日", weekday: "星期六", time: "19:38", home: "益阳", away: "岳阳", score: "待定" },
+            { round: 7, date: "10月25日", weekday: "星期六", time: "19:38", home: "怀化", away: "湘潭", score: "待定" },
+            { round: 7, date: "10月25日", weekday: "星期六", time: "19:38", home: "湘西", away: "张家界", score: "待定" },
+            { round: 7, date: "10月26日", weekday: "星期日", time: "19:38", home: "永州", away: "长沙", score: "待定" },
+            { round: 7, date: "10月26日", weekday: "星期日", time: "19:38", home: "邵阳", away: "衡阳", score: "待定" },
+            
+            // 第八轮
+            { round: 8, date: "10月31日", weekday: "星期五", time: "19:38", home: "常德", away: "怀化", score: "待定" },
+            { round: 8, date: "11月1日", weekday: "星期六", time: "19:38", home: "湘潭", away: "郴州", score: "待定" },
+            { round: 8, date: "11月1日", weekday: "星期六", time: "19:38", home: "株洲", away: "长沙", score: "待定" },
+            { round: 8, date: "11月1日", weekday: "星期六", time: "19:38", home: "永州", away: "益阳", score: "待定" },
+            { round: 8, date: "11月2日", weekday: "星期日", time: "15:00", home: "张家界", away: "衡阳", score: "待定" },
+            { round: 8, date: "11月2日", weekday: "星期日", time: "19:38", home: "邵阳", away: "娄底", score: "待定" },
+            { round: 8, date: "11月2日", weekday: "星期日", time: "19:38", home: "岳阳", away: "湘西", score: "待定" },
+            
+            // 第九轮
+            { round: 9, date: "11月7日", weekday: "星期五", time: "19:38", home: "衡阳", away: "永州", score: "待定" },
+            { round: 9, date: "11月8日", weekday: "星期六", time: "15:00", home: "长沙", away: "岳阳", score: "待定" },
+            { round: 9, date: "11月8日", weekday: "星期六", time: "19:38", home: "娄底", away: "张家界", score: "待定" },
+            { round: 9, date: "11月8日", weekday: "星期六", time: "19:38", home: "益阳", away: "邵阳", score: "待定" },
+            { round: 9, date: "11月8日", weekday: "星期六", time: "19:38", home: "怀化", away: "郴州", score: "待定" },
+            { round: 9, date: "11月9日", weekday: "星期日", time: "15:00", home: "常德", away: "湘潭", score: "待定" },
+            { round: 9, date: "11月9日", weekday: "星期日", time: "19:38", home: "株洲", away: "湘西", score: "待定" },
+            
+            // 第十轮
+            { round: 10, date: "11月14日", weekday: "星期五", time: "19:38", home: "长沙", away: "益阳", score: "待定" },
+            { round: 10, date: "11月15日", weekday: "星期六", time: "15:00", home: "永州", away: "郴州", score: "待定" },
+            { round: 10, date: "11月15日", weekday: "星期六", time: "15:00", home: "衡阳", away: "怀化", score: "待定" },
+            { round: 10, date: "11月15日", weekday: "星期六", time: "19:38", home: "张家界", away: "湘潭", score: "待定" },
+            { round: 10, date: "11月16日", weekday: "星期日", time: "15:00", home: "株洲", away: "娄底", score: "待定" },
+            { round: 10, date: "11月16日", weekday: "星期日", time: "19:38", home: "邵阳", away: "湘西", score: "待定" },
+            { round: 10, date: "11月16日", weekday: "星期日", time: "19:38", home: "岳阳", away: "常德", score: "待定" },
+            
+            // 第十一轮
+            { round: 11, date: "11月21日", weekday: "星期五", time: "19:38", home: "郴州", away: "湘西", score: "待定" },
+            { round: 11, date: "11月22日", weekday: "星期六", time: "19:38", home: "湘潭", away: "衡阳", score: "待定" },
+            { round: 11, date: "11月22日", weekday: "星期六", time: "15:00", home: "常德", away: "益阳", score: "待定" },
+            { round: 11, date: "11月22日", weekday: "星期六", time: "19:38", home: "娄底", away: "永州", score: "待定" },
+            { round: 11, date: "11月22日", weekday: "星期六", time: "19:38", home: "怀化", away: "张家界", score: "待定" },
+            { round: 11, date: "11月23日", weekday: "星期日", time: "15:00", home: "株洲", away: "岳阳", score: "待定" },
+            { round: 11, date: "11月23日", weekday: "星期日", time: "19:38", home: "邵阳", away: "长沙", score: "待定" },
+            
+            // 第十二轮
+            { round: 12, date: "11月29日", weekday: "星期六", time: "15:00", home: "长沙", away: "怀化", score: "待定" },
+            { round: 12, date: "11月29日", weekday: "星期六", time: "15:00", home: "衡阳", away: "娄底", score: "待定" },
+            { round: 12, date: "11月29日", weekday: "星期六", time: "15:00", home: "邵阳", away: "郴州", score: "待定" },
+            { round: 12, date: "11月29日", weekday: "星期六", time: "15:00", home: "益阳", away: "株洲", score: "待定" },
+            { round: 12, date: "11月29日", weekday: "星期六", time: "15:00", home: "永州", away: "常德", score: "待定" },
+            { round: 12, date: "11月29日", weekday: "星期六", time: "15:00", home: "张家界", away: "岳阳", score: "待定" },
+            { round: 12, date: "11月29日", weekday: "星期六", time: "15:00", home: "湘西", away: "湘潭", score: "待定" },
+            
+            // 第十三轮
+            { round: 13, date: "12月6日", weekday: "星期六", time: "15:00", home: "株洲", away: "永州", score: "待定" },
+            { round: 13, date: "12月6日", weekday: "星期六", time: "15:00", home: "湘潭", away: "岳阳", score: "待定" },
+            { round: 13, date: "12月6日", weekday: "星期六", time: "15:00", home: "郴州", away: "衡阳", score: "待定" },
+            { round: 13, date: "12月6日", weekday: "星期六", time: "15:00", home: "娄底", away: "湘西", score: "待定" },
+            { round: 13, date: "12月6日", weekday: "星期六", time: "15:00", home: "长沙", away: "常德", score: "待定" },
+            { round: 13, date: "12月6日", weekday: "星期六", time: "15:00", home: "益阳", away: "张家界", score: "待定" },
+            { round: 13, date: "12月6日", weekday: "星期六", time: "15:00", home: "怀化", away: "邵阳", score: "待定" }
+        ];
+
+        // 计算积分榜数据
+        function calculateStandings() {
+            const teams = {};
+            
+            // 初始化所有球队
+            const teamNames = [...new Set(matchData.flatMap(match => [match.home, match.away]))];
+            teamNames.forEach(team => {
+                teams[team] = {
+                    name: team,
+                    played: 0,
+                    wins: 0,
+                    draws: 0,
+                    losses: 0,
+                    goalsFor: 0,
+                    goalsAgainst: 0,
+                    goalDifference: 0,
+                    points: 0
+                };
+            });
+            
+            // 处理每场比赛
+            matchData.forEach(match => {
+                // 跳过未进行的比赛
+                if (match.score === "待定") return;
+                
+                const [homeScore, awayScore] = match.score.split(':').map(Number);
+                
+                // 更新主队数据
+                teams[match.home].played++;
+                teams[match.home].goalsFor += homeScore;
+                teams[match.home].goalsAgainst += awayScore;
+                teams[match.home].goalDifference = teams[match.home].goalsFor - teams[match.home].goalsAgainst;
+                
+                // 更新客队数据
+                teams[match.away].played++;
+                teams[match.away].goalsFor += awayScore;
+                teams[match.away].goalsAgainst += homeScore;
+                teams[match.away].goalDifference = teams[match.away].goalsFor - teams[match.away].goalsAgainst;
+                
+                // 判断胜负并更新积分
+                if (homeScore > awayScore) {
+                    teams[match.home].wins++;
+                    teams[match.home].points += 3;
+                    teams[match.away].losses++;
+                } else if (homeScore < awayScore) {
+                    teams[match.away].wins++;
+                    teams[match.away].points += 3;
+                    teams[match.home].losses++;
+                } else {
+                    teams[match.home].draws++;
+                    teams[match.home].points += 1;
+                    teams[match.away].draws++;
+                    teams[match.away].points += 1;
+                }
+            });
+            
+            // 转换为数组并排序
+            const standings = Object.values(teams);
+            standings.sort((a, b) => {
+                if (b.points !== a.points) return b.points - a.points;
+                if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
+                return b.goalsFor - a.goalsFor;
+            });
+            
+            return standings;
+        }
+
+        // 渲染积分榜
+        function renderStandings() {
+            const standings = calculateStandings();
+            const tbody = document.getElementById('standings-body');
+            tbody.innerHTML = '';
+            
+            standings.forEach((team, index) => {
+                const row = document.createElement('tr');
+                
+                // 添加特殊样式
+                if (index === 0) {
+                    row.classList.add('top-team');
+                } else if (index < 4) {
+                    row.classList.add('promotion-zone');
+                } else if (index >= standings.length - 3) {
+                    row.classList.add('relegation-zone');
+                }
+                
+                row.innerHTML = `
+                    <td class="rank">${index + 1}</td>
+                    <td class="team-name">${team.name}</td>
+                    <td>${team.played}</td>
+                    <td>${team.wins}</td>
+                    <td>${team.draws}</td>
+                    <td>${team.losses}</td>
+                    <td>${team.goalsFor}</td>
+                    <td>${team.goalsAgainst}</td>
+                    <td>${team.goalDifference > 0 ? '+' : ''}${team.goalDifference}</td>
+                    <td><strong>${team.points}</strong></td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化积分榜
+            renderStandings();
+            
+            // 初始化视图
+            renderRoundsView();
+            
+            // 添加事件监听器
+            document.getElementById('view-select').addEventListener('change', function() {
+                toggleView();
+            });
+            
+            document.getElementById('round-select').addEventListener('change', function() {
+                if (document.getElementById('view-select').value === 'rounds') {
+                    renderRoundsView();
+                } else {
+                    renderCityView();
+                }
+            });
+            
+            document.getElementById('city-select').addEventListener('change', function() {
+                if (document.getElementById('view-select').value === 'city') {
+                    renderCityView();
+                } else {
+                    renderRoundsView();
+                }
+            });
+            
+            document.getElementById('reset-btn').addEventListener('click', function() {
+                document.getElementById('round-select').value = 'all';
+                document.getElementById('city-select').value = 'all';
+                document.getElementById('view-select').value = 'rounds';
+                toggleView();
+            });
+        });
+
+        // 切换视图
+        function toggleView() {
+            const view = document.getElementById('view-select').value;
+            const roundsView = document.getElementById('rounds-view');
+            const cityView = document.getElementById('city-view');
+            
+            if (view === 'rounds') {
+                roundsView.classList.remove('hidden');
+                cityView.classList.add('hidden');
+                renderRoundsView();
+            } else {
+                roundsView.classList.add('hidden');
+                cityView.classList.remove('hidden');
+                renderCityView();
+            }
+        }
+
+        // 渲染轮次视图
+        function renderRoundsView() {
+            const selectedRound = document.getElementById('round-select').value;
+            const selectedCity = document.getElementById('city-select').value;
+            const container = document.getElementById('rounds-view');
+            
+            container.innerHTML = '';
+            
+            // 按轮次分组
+            const rounds = {};
+            matchData.forEach(match => {
+                if (!rounds[match.round]) {
+                    rounds[match.round] = [];
+                }
+                rounds[match.round].push(match);
+            });
+            
+            // 渲染每个轮次
+            Object.keys(rounds).forEach(roundNum => {
+                if (selectedRound !== 'all' && selectedRound !== roundNum) {
+                    return;
+                }
+                
+                const roundSection = document.createElement('div');
+                roundSection.className = 'round-section';
+                
+                const roundHeader = document.createElement('div');
+                roundHeader.className = 'round-header';
+                
+                const roundTitle = document.createElement('div');
+                roundTitle.className = 'round-title';
+                roundTitle.textContent = `第${roundNum}轮`;
+                
+                roundHeader.appendChild(roundTitle);
+                roundSection.appendChild(roundHeader);
+                
+                const table = document.createElement('table');
+                table.className = 'match-table';
+                
+                // 表头
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                headerRow.innerHTML = `
+                    <th>日期/时间</th>
+                    <th>主队</th>
+                    <th></th>
+                    <th>比分</th>
+                    <th>客队</th>
+                `;
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+                
+                // 表体
+                const tbody = document.createElement('tbody');
+                
+                let hasMatches = false;
+                
+                rounds[roundNum].forEach(match => {
+                    // 检查城市筛选
+                    if (selectedCity !== 'all' && match.home !== selectedCity && match.away !== selectedCity) {
+                        return;
+                    }
+                    
+                    hasMatches = true;
+                    
+                    const row = document.createElement('tr');
+                    
+                    // 高亮选中的城市
+                    if (selectedCity !== 'all' && (match.home === selectedCity || match.away === selectedCity)) {
+                        row.classList.add('city-highlight');
+                    }
+                    
+                    // 为未进行的比赛添加特殊样式
+                    const scoreClass = match.score === "待定" ? "pending" : "";
+                    
+                    row.innerHTML = `
+                        <td class="match-info">${match.date} ${match.weekday} ${match.time}</td>
+                        <td class="home-team">${match.home}</td>
+                        <td class="vs">VS</td>
+                        <td class="score ${scoreClass}">${match.score}</td>
+                        <td class="away-team">${match.away}</td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
+                
+                if (!hasMatches) {
+                    const row = document.createElement('tr');
+                    const cell = document.createElement('td');
+                    cell.colSpan = 5;
+                    cell.className = 'no-results';
+                    cell.textContent = '该轮次没有符合条件的比赛';
+                    row.appendChild(cell);
+                    tbody.appendChild(row);
+                }
+                
+                table.appendChild(tbody);
+                roundSection.appendChild(table);
+                container.appendChild(roundSection);
+            });
+            
+            if (container.children.length === 0) {
+                container.innerHTML = '<div class="no-results">没有找到符合条件的比赛</div>';
+            }
+        }
+
+        // 渲染城市视图
+        function renderCityView() {
+            const selectedCity = document.getElementById('city-select').value;
+            const selectedRound = document.getElementById('round-select').value;
+            const container = document.getElementById('city-view');
+            
+            container.innerHTML = '';
+            
+            if (selectedCity === 'all') {
+                container.innerHTML = '<div class="no-results">请选择一个城市查看其比赛记录</div>';
+                return;
+            }
+            
+            // 筛选该城市的比赛
+            const cityMatches = matchData.filter(match => 
+                match.home === selectedCity || match.away === selectedCity
+            );
+            
+            // 按轮次筛选
+            const filteredMatches = selectedRound === 'all' 
+                ? cityMatches 
+                : cityMatches.filter(match => match.round.toString() === selectedRound);
+            
+            if (filteredMatches.length === 0) {
+                container.innerHTML = '<div class="no-results">该城市没有符合条件的比赛</div>';
+                return;
+            }
+            
+            const citySection = document.createElement('div');
+            citySection.className = 'city-section';
+            
+            const cityHeader = document.createElement('div');
+            cityHeader.className = 'city-header';
+            
+            const cityTitle = document.createElement('div');
+            cityTitle.className = 'city-title';
+            cityTitle.textContent = `${selectedCity}队 比赛记录`;
+            
+            const cityBadge = document.createElement('span');
+            cityBadge.className = 'city-badge';
+            cityBadge.textContent = `${filteredMatches.length} 场比赛`;
+            
+            cityHeader.appendChild(cityTitle);
+            cityHeader.appendChild(cityBadge);
+            citySection.appendChild(cityHeader);
+            
+            const table = document.createElement('table');
+            table.className = 'match-table';
+            
+            // 表头
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            headerRow.innerHTML = `
+                <th>轮次</th>
+                <th>日期/时间</th>
+                <th>主队</th>
+                <th></th>
+                <th>比分</th>
+                <th>客队</th>
+                <th>比赛结果</th>
+            `;
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            
+            // 表体
+            const tbody = document.createElement('tbody');
+            
+            filteredMatches.forEach(match => {
+                const row = document.createElement('tr');
+                
+                // 计算比赛结果
+                let result = '';
+                let rowStyle = '';
+                
+                if (match.score === "待定") {
+                    result = "未进行";
+                    rowStyle = 'background-color: #f9f9f9;';
+                } else {
+                    const [homeScore, awayScore] = match.score.split(':').map(Number);
+                    
+                    if (match.home === selectedCity) {
+                        if (homeScore > awayScore) {
+                            result = '胜';
+                            rowStyle = 'background-color: #e8f5e9;';
+                        } else if (homeScore < awayScore) {
+                            result = '负';
+                            rowStyle = 'background-color: #ffebee;';
+                        } else {
+                            result = '平';
+                            rowStyle = 'background-color: #fff8e1;';
+                        }
+                    } else {
+                        if (awayScore > homeScore) {
+                            result = '胜';
+                            rowStyle = 'background-color: #e8f5e9;';
+                        } else if (awayScore < homeScore) {
+                            result = '负';
+                            rowStyle = 'background-color: #ffebee;';
+                        } else {
+                            result = '平';
+                            rowStyle = 'background-color: #fff8e1;';
+                        }
+                    }
+                }
+                
+                row.style.cssText = rowStyle;
+                
+                row.innerHTML = `
+                    <td>第${match.round}轮</td>
+                    <td class="match-info">${match.date} ${match.weekday} ${match.time}</td>
+                    <td class="home-team">${match.home}</td>
+                    <td class="vs">VS</td>
+                    <td class="score">${match.score}</td>
+                    <td class="away-team">${match.away}</td>
+                    <td>${result}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            table.appendChild(tbody);
+            citySection.appendChild(table);
+            container.appendChild(citySection);
+        }
+    </script>
+</body>
+</html>
